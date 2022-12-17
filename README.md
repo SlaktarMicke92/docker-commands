@@ -2,33 +2,33 @@
 Keep track of docker commands
 
 ## Build
-cd /directory/to/Dockerfile/
-docker build -t image-name .
+* cd /directory/to/Dockerfile/
+* docker build -t image-name .
 
 ## Run
-Arguments
--d - Detach
--p 0-9{2-5}:0-9{2-5} - Port on host to port in container
+Arguments:
+* -d - Detach
+* -p 0-9{2-5}:0-9{2-5} - Port on host to port in container
 
 docker run -dp ####:#### image-name
 
 ## List
-docker ps
+* docker ps
 
 ## Removal
-docker stop ###
-docker rm ###
+1. docker stop ###
+2. docker rm ###
 or
-docker rm -f ###
+* docker rm -f ###
 
 ## Run commands on container
-docker exec ### <command>
+* docker exec ### <command>
 
 ## Volume
 First you need to create a volume, for persistency.
 Then you bind it to container when r.
 ### Create
-docker volume create <volume-name>
+* docker volume create <volume-name>
 ### Run
-docker run -dp ####:#### -v <volume-name>:</path/to/mount/folder> <image-name>
+* docker run -dp ####:#### -v <volume-name>:</path/to/mount/folder> <image-name>
 Example: docker run -dp 3000:3000 -v todo-db:/etc/todos getting-started
