@@ -13,6 +13,11 @@ Arguments:
 * -w - Working directory, for example /app
 * -v - Bind mount (link) the host's present getting-started/app directory to the container's /app directory. Note: Docker requires absolute paths for binding mounts, so in this example we use pwd for printing the absolute path of the working directory, i.e. the app directory, instead of typing it manually.
 * Can also run commands after <image-name>, for example: sh -c "yarn install && yarn run dev"
+* -e - Environment variables, example: -e MYSQL_PASSWORD=password
+* --network - Attach to network
+* --network-alias - Name for container in network
+* -i - Keep STDIN open even if not attached
+* -t - Allocate a pseudo-tty
 
 docker run -dp ####:#### <image-name>
 
@@ -41,7 +46,13 @@ Then you bind it to container when r.
 ### Run
 * docker run -dp ####:#### -v <volume-name>:</path/to/mount/folder> <image-name>
 Example: docker run -dp 3000:3000 -v todo-db:/etc/todos getting-started
+You can also create a named volume when running 'docker run':
+* docker run -dp ####:#### -v <volume-name-that-does-not-exist>:</path/to/mount/folder> <image-name>
 
 ## Logs
 Read logs in realtime:
 * docker logs -f <container-id>
+  
+## Network
+Create a network for attachment later:
+* docker network create todo-app
