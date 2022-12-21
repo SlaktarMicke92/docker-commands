@@ -94,7 +94,7 @@ To mount named volumes you have to define the volumes at the top level of the do
   * docker compose down --volumes
 
 ## Dockerfile examples
-Reference: [NodeJS Docker Guide](https://nodejs.org/en/docs/guides/nodejs-docker-webapp/)
+Reference: [NodeJS Docker Guide](https://nodejs.org/en/docs/guides/nodejs-docker-webapp/)\
 Example of how to use caching to improve build times when making changes in the code (which will change how COPY . . works):
 ```
 FROM node:18-alpine
