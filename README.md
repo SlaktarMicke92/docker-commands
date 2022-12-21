@@ -28,6 +28,8 @@ docker start &lt;container-id>
 Arguments:
   * -a - List all containers
 docker ps
+### Images
+docker images
 
 ## Removal
 1. docker stop ###
@@ -56,6 +58,15 @@ Read logs in realtime:
 ## Network
 Create a network for attachment later:
   * docker network create todo-app
+
+## History
+List all the lines that an image contains:
+  * docker image history &lt;image>
+
+## Security
+Do a scan and show vulnerabilities in the supported package managers:
+  * docker scan &lt;image>
+  * docker scan --no-trunc &lt;image>
   
 ## Docker Compose
 ###### docker-compose.yml
