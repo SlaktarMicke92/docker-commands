@@ -92,3 +92,40 @@ To mount named volumes you have to define the volumes at the top level of the do
 ### Stop
   * docker compose down
   * docker compose down --volumes
+
+## Dockerfile examples
+Reference: [NodeJS Docker Guide](https://nodejs.org/en/docs/guides/nodejs-docker-webapp/)
+Example of how to use caching to improve build times when making changes in the code (which will change how COPY . . works):
+`FROM node:18-alpine
+WORKDIR /app
+COPY package.json yarn.lock ./
+RUN yarn install --production
+COPY . .
+CMD ["node", "src/index.js"]`
+
+## .dockerignore
+Works like .gitignore, for when building containers
+
+## Multi-Stage Builds
+Tutorial won't really go through this topic, fill in more later. There is an example of how to ship a Java application without the unnecessary build tools:
+
+`FROM maven AS build
+WORKDIR /app
+COPY . .
+RUN mvn package
+
+FROM tomcat
+COPY --from=build /app/target/file.war /usr/local/tomcat/webapps`
+
+An example of a NodeJS application with Multi-Stage Builds:
+
+`FROM node:18 AS build
+WORKDIR /app
+COPY package* yarn.lock ./
+RUN yarn install
+COPY public ./public
+COPY src ./src
+RUN yarn run build
+
+FROM nginx:alpine
+COPY --from=build /app/build /usr/share/nginx/html`
